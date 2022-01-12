@@ -12,7 +12,7 @@ steps:
     - --project=searce-playground
     - --force
 #Creating a new instance template
- - name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gcloud
    id: create-instance-template
    args:
       - beta
@@ -33,7 +33,7 @@ steps:
       - --boot-disk-device-name=mohak-akbar-boot-disk
       - --project=searce-playground
 #Creating a test VM
- - name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gcloud
    id: create-test-vm
    args:
       - compute
@@ -45,7 +45,7 @@ steps:
       - --project=searce-playground
 steps:
 #Make sure that our MIG is stable before update
- - name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gcloud
    id: wait-until-stable
    args:
       - compute
@@ -56,7 +56,7 @@ steps:
       - --stable
       - --region=asia-south1
 #Updating the MIG with new instance template
- - name: gcr.io/cloud-builders/gcloud
+- name: gcr.io/cloud-builders/gcloud
    id: updating-mig
    args:
       - compute
@@ -69,5 +69,15 @@ steps:
       - --type=proactive
       - --region=asia-south1
       - --project=searce-playground
+   # Deletion of test VM
+- name: gcr.io/cloud-builders/gcloud
+   id: deleting-test-vm
+   args:
+      - compute
+      - instances
+      - delete
+      - instance-name
+      - --zone=asia-south1-a
+      - --project=tripoto-infra-prod
 
      

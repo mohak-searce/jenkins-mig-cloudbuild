@@ -7,7 +7,7 @@ steps:
     - images
     - create
     - mohak-akbar-windows-img
-    - --source-disk=mohak-akbar-poc
+    - --source-disk=mohak-instance-group-19z8
     - --source-disk-zone=asia-south1-a
     - --project=searce-playground
     - --force
@@ -27,7 +27,7 @@ steps:
       - --scopes=https://www.googleapis.com/auth/cloud-platform
       - --region=asia-south1
       - --tags=mig-rolling-update
-      - --image=mohak-akbar-poc
+      - --image=mohak-akbar-windows-img
       - --boot-disk-size=32GB
       - --boot-disk-type=pd-ssd
       - --boot-disk-device-name=mohak-akbar-boot-disk

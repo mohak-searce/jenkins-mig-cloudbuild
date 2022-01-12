@@ -6,8 +6,68 @@ steps:
     - compute
     - images
     - create
-    - mohak-akbar-poc
+    - mohak-akbar-windows-img
     - --source-disk=mohak-akbar-poc
     - --source-disk-zone=asia-south1-a
     - --project=searce-playground
     - --force
+#Creating a new instance template
+ - name: gcr.io/cloud-builders/gcloud
+   id: create-instance-template
+   args:
+      - beta
+      - compute
+      - instance-templates
+      - create
+      - mohak-akbar-cloudbuild-template
+      - --subnet=projects/searce-playground/regions/asia-south1/subnetworks/mohak-mumbai-subnet
+      - --no-address
+      - --maintenance-policy=MIGRATE
+      - --service-account=mohak-56@searce-playground.iam.gserviceaccount.com
+      - --scopes=https://www.googleapis.com/auth/cloud-platform
+      - --region=asia-south1
+      - --tags=mig-rolling-update
+      - --image=mohak-akbar-poc
+      - --boot-disk-size=32GB
+      - --boot-disk-type=pd-ssd
+      - --boot-disk-device-name=mohak-akbar-boot-disk
+      - --project=searce-playground
+#Creating a test VM
+ - name: gcr.io/cloud-builders/gcloud
+   id: create-test-vm
+   args:
+      - compute
+      - instances
+      - create
+      - mohak-akbar-poc-new
+      - --source-instance-template=mohak-akbar-cloudbuild-template
+      - --zone=asia-south1-a
+      - --project=searce-playground
+steps:
+#Make sure that our MIG is stable before update
+ - name: gcr.io/cloud-builders/gcloud
+   id: wait-until-stable
+   args:
+      - compute
+      - instance-groups
+      - managed
+      - wait-until
+      - mohak-akbar-mig
+      - --stable
+      - --region=asia-south1
+#Updating the MIG with new instance template
+ - name: gcr.io/cloud-builders/gcloud
+   id: updating-mig
+   args:
+      - compute
+      - instance-groups
+      - managed
+      - rolling-action
+      - start-update
+      - mohak-akbar-mig
+      - --version=template=mohak-akbar-cloudbuild-template{build number}
+      - --type=proactive
+      - --region=asia-south1
+      - --project=searce-playground
+
+     

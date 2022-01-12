@@ -8,7 +8,7 @@ steps:
     - create
     - mohak-akbar-windows-img
     - --source-disk=mohak-instance-group-19z8
-    - --source-disk-zone=asia-south1-a
+    - --source-disk-zone=asia-south1-c
     - --project=searce-playground
     - --force
 #Creating a new instance template

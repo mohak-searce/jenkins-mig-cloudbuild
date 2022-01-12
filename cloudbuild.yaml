@@ -6,7 +6,7 @@ steps:
     - compute
     - images
     - create
-    - image_name
+    - mohak-akbar-poc
     - --source-disk=mohak-akbar-poc
     - --source-disk-zone=asia-south1-a
     - --project=searce-playground

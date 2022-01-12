@@ -54,7 +54,7 @@ steps:
       - wait-until
       - mohak-akbar-mig
       - --stable
-      - --region=asia-south1
+      - --zone=asia-south1-a
 #Updating the MIG with new instance template
 - name: gcr.io/cloud-builders/gcloud
   id: updating-mig

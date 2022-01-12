@@ -51,7 +51,7 @@ steps:
       - instance-groups
       - managed
       - wait-until
-      - mohak-akbar-mig
+      - mohak-instance-group
       - --stable
       - --region=asia-south1
 #Updating the MIG with new instance template
@@ -63,7 +63,7 @@ steps:
       - managed
       - rolling-action
       - start-update
-      - mohak-akbar-mig
+      - mohak-instance-group
       - --version=template=mohak-akbar-cloudbuild-template{build number}
       - --type=proactive
       - --region=asia-south1

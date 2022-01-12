@@ -13,8 +13,8 @@ steps:
     - --force
 #Creating a new instance template
 - name: gcr.io/cloud-builders/gcloud
-   id: create-instance-template
-   args:
+  id: create-instance-template
+  args:
       - beta
       - compute
       - instance-templates
@@ -34,8 +34,8 @@ steps:
       - --project=searce-playground
 #Creating a test VM
 - name: gcr.io/cloud-builders/gcloud
-   id: create-test-vm
-   args:
+  id: create-test-vm
+  args:
       - compute
       - instances
       - create
@@ -46,8 +46,8 @@ steps:
 steps:
 #Make sure that our MIG is stable before update
 - name: gcr.io/cloud-builders/gcloud
-   id: wait-until-stable
-   args:
+  id: wait-until-stable
+  args:
       - compute
       - instance-groups
       - managed
@@ -57,8 +57,8 @@ steps:
       - --region=asia-south1
 #Updating the MIG with new instance template
 - name: gcr.io/cloud-builders/gcloud
-   id: updating-mig
-   args:
+  id: updating-mig
+  args:
       - compute
       - instance-groups
       - managed
@@ -71,8 +71,8 @@ steps:
       - --project=searce-playground
    # Deletion of test VM
 - name: gcr.io/cloud-builders/gcloud
-   id: deleting-test-vm
-   args:
+  id: deleting-test-vm
+  args:
       - compute
       - instances
       - delete

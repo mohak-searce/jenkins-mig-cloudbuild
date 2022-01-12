@@ -25,7 +25,7 @@ steps:
       - --maintenance-policy=MIGRATE
       - --service-account=mohak-56@searce-playground.iam.gserviceaccount.com
       - --scopes=https://www.googleapis.com/auth/cloud-platform
-      - --region=asia-south1
+      - --region=asia-south1-c
       - --tags=mig-rolling-update
       - --image=mohak-akbar-windows-img
       - --boot-disk-size=32GB

@@ -1,0 +1,13 @@
+steps:
+# Creating a golden image
+- name: gcr.io/cloud-builders/gcloud
+  id: create-golden-image
+  args:
+    - compute
+    - images
+    - create
+    - image_name
+    - --source-disk=mohak-akbar-poc
+    - --source-disk-zone=asia-south1-a
+    - --project=searce-playground
+    - --force

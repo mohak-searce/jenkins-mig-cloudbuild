@@ -36,6 +36,7 @@ steps:
 - name: gcr.io/cloud-builders/gcloud
   id: wait-until-stable
   args:
+      - beta
       - compute
       - instance-groups
       - managed
@@ -48,6 +49,7 @@ steps:
 - name: gcr.io/cloud-builders/gcloud
   id: updating-mig
   args:
+      - beta
       - compute
       - instance-groups
       - managed

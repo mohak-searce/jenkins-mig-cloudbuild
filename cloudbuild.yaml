@@ -6,10 +6,10 @@ steps:
     - compute
     - images
     - create
-    - mohak-akbar-windows-img
-    - --source-disk=mohak-instance-group-pbw3
+    - mohak-akbar-cloudbuild-img
+    - --source-disk=mohak-instance-group-gt5s
     - --source-disk-zone=asia-south1-c
-    - --project=searce-playground
+    - --project=prod-akbar-travels
     - --force
 #Creating a new instance template
 - name: gcr.io/cloud-builders/gcloud
@@ -20,18 +20,18 @@ steps:
       - instance-templates
       - create
       - mohak-akbar-cloudbuild-template
-      - --subnet=projects/searce-playground/regions/asia-south1/subnetworks/mohak-mumbai-subnet
+      - --subnet=projects/prod-akbar-travels/regions/asia-south1/subnetworks/prod-apps-asia-sth1-subnet
       - --no-address
       - --maintenance-policy=MIGRATE
-      - --service-account=mohak-56@searce-playground.iam.gserviceaccount.com
+      - --service-account=451318807293-compute@developer.gserviceaccount.com
       - --scopes=https://www.googleapis.com/auth/cloud-platform
       - --region=asia-south1-c
       - --tags=mig-rolling-update
-      - --image=mohak-akbar-windows-img
+      - --image=mohak-akbar-cloudbuild-img
       - --boot-disk-size=32GB
       - --boot-disk-type=pd-ssd
       - --boot-disk-device-name=mohak-akbar-boot-disk
-      - --project=searce-playground
+      - --project=prod-akbar-travels
 #Creating a test VM
 - name: gcr.io/cloud-builders/gcloud
   id: create-test-vm
@@ -39,10 +39,10 @@ steps:
       - compute
       - instances
       - create
-      - mohak-akbar-poc-new
+      - mohak-akbar-cloudbuild-vm
       - --source-instance-template=mohak-akbar-cloudbuild-template
       - --zone=asia-south1-a
-      - --project=searce-playground
+      - --project=prod-akbar-travels
 #Make sure that our MIG is stable before update
 - name: gcr.io/cloud-builders/gcloud
   id: wait-until-stable
@@ -67,7 +67,7 @@ steps:
       - --version=template=mohak-akbar-cloudbuild-template{build number}
       - --type=proactive
       - --region=asia-south1
-      - --project=searce-playground
+      - --project=prod-akbar-travels
    # Deletion of test VM
 - name: gcr.io/cloud-builders/gcloud
   id: deleting-test-vm
@@ -77,6 +77,6 @@ steps:
       - delete
       - instance-name
       - --zone=asia-south1-a
-      - --project=tripoto-infra-prod
+      - --project=prod-akbar-travels
 
      

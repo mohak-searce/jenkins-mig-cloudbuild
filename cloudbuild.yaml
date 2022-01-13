@@ -10,5 +10,4 @@ steps:
       - mohak-akbar-mig
       - --stable
       - --project=prod-akbar-travels
-      - --region=asia-south1
       - --zone=asia-south1-a

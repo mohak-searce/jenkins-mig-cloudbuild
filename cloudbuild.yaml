@@ -8,7 +8,7 @@ steps:
     - create
     - mohak-akbar-cloudbuild-img
     - --source-disk=mohak-akbar-mig-j6hk
-    - --zone=asia-south1-c
+    - --source-disk-zone=asia-south1-c
     - --project=prod-akbar-travels
     - --force
 #Creating a new instance template

@@ -23,7 +23,7 @@ steps:
       - --subnet=projects/prod-akbar-travels/regions/asia-south1/subnetworks/prod-apps-asia-sth1-subnet
       - --no-address
       - --maintenance-policy=MIGRATE
-      - --service-account=451318807293@cloudservices.gserviceaccount.com
+      - --service-account=451318807293-compute@developer.gserviceaccount.com
       - --scopes=https://www.googleapis.com/auth/cloud-platform
       - --region=asia-south1-c
       - --tags=mig-rolling-update
@@ -75,7 +75,7 @@ steps:
       - compute
       - instances
       - delete
-      - instance-name
+      - mohak-akbar-cloudbuild-vm
       - --zone=asia-south1-a
       - --project=prod-akbar-travels
 

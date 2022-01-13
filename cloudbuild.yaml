@@ -1,16 +1,4 @@
 steps:
-# Creating a golden image
-- name: gcr.io/cloud-builders/gcloud
-  id: create-golden-image
-  args:
-    - compute
-    - images
-    - create
-    - mohak-akbar-cloudbuild-img
-    - --source-disk=mohak-instance-group-gt5s
-    - --source-disk-zone=asia-south1-c
-    - --project=prod-akbar-travels
-    - --force
 #Creating a new instance template
 - name: gcr.io/cloud-builders/gcloud
   id: create-instance-template
@@ -27,7 +15,7 @@ steps:
       - --scopes=https://www.googleapis.com/auth/cloud-platform
       - --region=asia-south1-c
       - --tags=mig-rolling-update
-      - --image=mohak-akbar-cloudbuild-img
+      - --image=akbar-poc-img
       - --boot-disk-size=32GB
       - --boot-disk-type=pd-ssd
       - --boot-disk-device-name=mohak-akbar-boot-disk

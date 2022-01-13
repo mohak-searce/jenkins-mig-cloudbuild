@@ -55,8 +55,8 @@ steps:
       - mohak-instance-group
       - --version=template=mohak-akbar-cloudbuild-template{build number}
       - --type=proactive
-      - --project=prod-akbar-travels
       - --region=asia-south1
+      - --zone=asia-south1-a
       - --project=prod-akbar-travels
    # Deletion of test VM
 - name: gcr.io/cloud-builders/gcloud

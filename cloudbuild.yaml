@@ -7,7 +7,7 @@ steps:
     - images
     - create
     - mohak-akbar-windows-img
-    - --source-disk=mohak-instance-group-19z8
+    - --source-disk=mohak-instance-group-pbw3
     - --source-disk-zone=asia-south1-c
     - --project=searce-playground
     - --force

@@ -10,6 +10,7 @@ steps:
       - mohak-akbar-cloudbuild-template
       - --subnet=projects/prod-akbar-travels/regions/asia-south1/subnetworks/prod-apps-asia-sth1-subnet
       - --no-address
+      - --image-project=prod-akbar-travels
       - --maintenance-policy=MIGRATE
       - --service-account=prod-akbar-jenkins-sa@prod-akbar-travels.iam.gserviceaccount.com
       - --scopes=https://www.googleapis.com/auth/cloud-platform

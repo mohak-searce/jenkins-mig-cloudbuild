@@ -55,6 +55,7 @@ steps:
       - mohak-instance-group
       - --version=template=mohak-akbar-cloudbuild-template{build number}
       - --type=proactive
+      - --project=prod-akbar-travels
       - --region=asia-south1
       - --project=prod-akbar-travels
    # Deletion of test VM

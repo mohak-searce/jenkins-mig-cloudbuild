@@ -56,7 +56,7 @@ steps:
       - rolling-action
       - start-update
       - mohak-akbar-mig
-      - --version=template=mohak-akbar-cloudbuild-template{build number}
+      - --version=template=mohak-akbar-cloudbuild-template
       - --type=proactive
       - --zone=asia-south1-a
       - --project=prod-akbar-travels

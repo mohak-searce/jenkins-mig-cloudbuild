@@ -44,7 +44,7 @@ steps:
       - mohak-akbar-mig
       - --stable
       - --project=prod-akbar-travels
-      - --region=asia-south1
+      - --zone=asia-south1-a
 #Updating the MIG with new instance template
 - name: gcr.io/cloud-builders/gcloud
   id: updating-mig
@@ -58,7 +58,6 @@ steps:
       - mohak-akbar-mig
       - --version=template=mohak-akbar-cloudbuild-template{build number}
       - --type=proactive
-      - --region=asia-south1
       - --zone=asia-south1-a
       - --project=prod-akbar-travels
    # Deletion of test VM

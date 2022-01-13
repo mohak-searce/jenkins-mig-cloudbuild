@@ -15,7 +15,7 @@ steps:
       - --scopes=https://www.googleapis.com/auth/cloud-platform
       - --region=asia-south1-c
       - --tags=mig-rolling-update
-      - --image=akbar-poc-img
+      - --image=akbar-poc-img-1
       - --boot-disk-size=32GB
       - --boot-disk-type=pd-ssd
       - --boot-disk-device-name=mohak-akbar-boot-disk
